@@ -22,7 +22,7 @@ func GetEntityConfigWatcher(ctx context.Context, client *clientv3.Client) <-chan
 		StoreName: new(corev3.EntityConfig).StoreName(),
 	})
 	w := etcdstore.Watch(ctx, client, key, true)
-	ch := make(chan store.WatchEventEntityConfig, 1)
+	ch := make(chan store.WatchEventEntityConfig, 5)
 
 	go func() {
 		defer close(ch)
